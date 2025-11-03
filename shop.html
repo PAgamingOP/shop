@@ -3,59 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop | PA Network</title>
+<title>PA Network | Shop</title>
 <style>
 body {
   margin: 0;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  color: white;
-  text-align: center;
-  background: black;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: #000;
 }
 canvas {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   z-index: 0;
+}
+.header {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 10px 20px;
+  backdrop-filter: blur(6px);
+  font-size: 18px;
+  color: gold;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(255,255,100,0.4);
 }
 .container {
   position: relative;
   z-index: 2;
-  padding-top: 60px;
+  text-align: center;
+  padding-top: 100px;
 }
 h1 {
-  font-size: 32px;
+  font-size: 40px;
   color: gold;
-  text-shadow: 0 0 10px yellow;
+  text-shadow: 0 0 15px yellow;
+  margin-bottom: 10px;
 }
-.coin-display {
-  font-size: 20px;
-  margin: 10px;
-  color: #0f0;
+h2 {
+  font-size: 24px;
+  color: #00ffaa;
+  margin-bottom: 20px;
 }
 button {
-  background: linear-gradient(90deg, #ffb347, #ffcc33);
+  background: linear-gradient(90deg,#ffb347,#ffcc33);
   border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  color: black;
+  padding: 12px 25px;
+  border-radius: 12px;
   font-weight: bold;
+  color: black;
   cursor: pointer;
-  box-shadow: 0 0 10px yellow;
+  box-shadow: 0 0 10px gold;
   transition: 0.3s;
 }
 button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px gold;
+  transform: scale(1.05);
+  box-shadow: 0 0 25px yellow;
+}
+.shop-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 40px;
 }
 .shop-item {
   background: rgba(255,255,255,0.1);
-  margin: 20px auto;
-  width: 300px;
-  padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 0 10px #444;
+  width: 280px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.shop-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px gold;
+}
+.shop-item h3 {
+  color: gold;
+  font-size: 22px;
+}
+.price {
+  margin: 10px 0;
+  color: #00ff99;
+  font-size: 18px;
 }
 .popup {
   display: none;
@@ -68,39 +102,63 @@ button:hover {
   align-items: center;
 }
 .popup-content {
-  background: #222;
+  background: #111;
   padding: 30px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 0 15px gold;
+  box-shadow: 0 0 20px gold;
 }
 .popup-content button {
   margin-top: 10px;
+}
+.earn-section {
+  margin-top: 20px;
 }
 </style>
 </head>
 <body>
 <canvas id="bg"></canvas>
+
+<div class="header">💰 Coins: <span id="coins">0</span></div>
+
 <div class="container">
   <h1>🎯 PA Network Shop</h1>
-  <div class="coin-display">💰 Coins: <span id="coins">0</span></div>
-  <div class="shop-item" data-price="3">
-    <h3>Custom Plugin Download</h3>
-    <p>Price: 3 Coins</p>
-    <button onclick="purchase(this)">Buy Now</button>
+
+  <div class="earn-section">
+    <h2>💎 Earn Coins</h2>
+    <p>Click the button below to earn coins by completing tasks!</p>
+    <button onclick="earnCoin()">Earn Coins</button>
+  </div>
+
+  <div class="shop-grid">
+    <div class="shop-item" data-price="3">
+      <h3>Custom Plugin</h3>
+      <div class="price">Price: 🪙 3 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+    <div class="shop-item" data-price="5">
+      <h3>Exclusive Map</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+    <div class="shop-item" data-price="8">
+      <h3>Advanced Plugin Pack</h3>
+      <div class="price">Price: 🪙 8 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
   </div>
 </div>
 
 <div id="popup" class="popup">
   <div class="popup-content">
     <h3>❌ Not enough coins!</h3>
-    <p>Earn coins by completing simple tasks.</p>
+    <p>You need more coins to buy this item.</p>
     <button onclick="goEarn()">Earn Coins</button>
   </div>
 </div>
 
 <script>
-// === Background Fireflies ===
+// === Firefly Background ===
 const canvas=document.getElementById("bg"),ctx=canvas.getContext("2d");
 canvas.width=innerWidth;canvas.height=innerHeight;
 const particles=[];
@@ -152,7 +210,6 @@ function earnCoin(){
   window.location.href=randomLink;
 }
 
-// === Buying Logic ===
 function purchase(btn){
   const price=parseInt(btn.parentElement.getAttribute("data-price"));
   let coins=parseInt(localStorage.getItem("coins")||"0");
@@ -167,7 +224,6 @@ function purchase(btn){
   }
 }
 
-// === Popup Control ===
 function goEarn(){
   document.getElementById("popup").style.display="none";
   earnCoin();
