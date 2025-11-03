@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAnetwork | +1 Coin Earned</title>
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+<style>
+  html,body {
+    margin:0;
+    height:100%;
+    overflow:hidden;
+    background:radial-gradient(circle at center,#000,#1a0033);
+    font-family:'Minecraft',monospace;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+  }
+
+  h1 {
+    font-size:28px;
+    color:#ffd700;
+    text-shadow:0 0 15px #ffcc33, 0 0 30px #ff9900;
+    animation:glow 1.5s infinite alternate;
+  }
+
+  @keyframes glow {
+    from {text-shadow:0 0 10px #ffcc33;}
+    to {text-shadow:0 0 25px #ffaa00, 0 0 50px #ff7700;}
+  }
+
+  .coin {
+    font-size:80px;
+    animation:spin 2s linear infinite;
+    filter:drop-shadow(0 0 10px gold);
+  }
+
+  @keyframes spin {
+    from {transform:rotateY(0deg);}
+    to {transform:rotateY(360deg);}
+  }
+
+  button {
+    background:linear-gradient(145deg,#ffcc00,#ff9900);
+    border:none;
+    padding:12px 30px;
+    border-radius:10px;
+    color:#000;
+    font-weight:bold;
+    margin-top:30px;
+    box-shadow:0 0 15px gold;
+    cursor:pointer;
+    transition:transform 0.2s;
+  }
+
+  button:hover {
+    transform:scale(1.1);
+    box-shadow:0 0 25px #ffd700;
+  }
+
+  .particles {
+    position:fixed;
+    top:0;left:0;width:100%;height:100%;
+    z-index:-1;overflow:hidden;
+  }
+
+  .particle {
+    position:absolute;
+    width:4px;height:4px;
+    background:rgba(255,215,0,0.8);
+    border-radius:50%;
+    animation:float 6s infinite ease-in-out;
+  }
+
+  @keyframes float {
+    0% {transform:translateY(0) scale(1);}
+    50% {transform:translateY(-100px) scale(1.3);}
+    100% {transform:translateY(0) scale(1);}
+  }
+</style>
+</head>
+<body>
+<div class="particles" id="particles"></div>
+
+<h1>+1 🪙 Coin Added!</h1>
+<div class="coin">🪙</div>
+<button id="confirmBtn">Add to Account</button>
+
+<script>
+  // === Particle generator ===
+  const pContainer = document.getElementById("particles");
+  for(let i=0;i<50;i++){
+    const p=document.createElement("div");
+    p.classList.add("particle");
+    p.style.left=Math.random()*100+"%";
+    p.style.top=Math.random()*100+"%";
+    p.style.animationDelay=(Math.random()*5)+"s";
+    pContainer.appendChild(p);
+  }
+
+  // === Prevent re-access ===
+  if (sessionStorage.getItem("coinClaimed")) {
+    window.location.href = "shop.html";
+  }
+
+  document.getElementById("confirmBtn").addEventListener("click", () => {
+    // Mark as claimed so they can’t reload or revisit
+    sessionStorage.setItem("coinClaimed", "true");
+
+    // Add +1 coin to localStorage (the shop uses this later)
+    let coins = parseInt(localStorage.getItem("coins") || "0");
+    localStorage.setItem("coins", coins + 1);
+
+    // Redirect back to shop
+    window.location.href = "shop.html";
+  });
+
+  // Disable back navigation exploit
+  window.history.pushState(null, null, window.location.href);
+  window.onpopstate = function () {
+    window.location.href = "shop.html";
+  };
+</script>
+</body>
+</html>
