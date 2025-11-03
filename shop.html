@@ -1,74 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="logo.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAnetwork Shop</title>
-<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+<title>PAnetwork | Earn Coins & Free Plugins</title>
+<meta name="description" content="Earn coins by watching ads and download free Minecraft plugins, maps, and tools from PAnetwork.">
+<meta name="keywords" content="Minecraft plugins, earn coins, free downloads, PocketMine, MCPE maps, PAnetwork, pagamingop">
+<link rel="canonical" href="https://pagamingop.github.io/shop/shop.html">
 <style>
-html,body{margin:0;padding:0;height:100%;overflow-y:auto;font-family:'Minecraft',monospace;background:radial-gradient(circle at bottom,#03010a,#000);color:#ddd;}
-#galaxy{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
-.back{position:fixed;top:20px;left:20px;background:linear-gradient(145deg,#2d0050,#18002e);border:2px solid #7f3cff;border-radius:10px;padding:10px 20px;box-shadow:0 0 15px #a66bff;color:white;cursor:pointer;}
-header{padding:80px 0 20px;text-align:center;}
-.coinbox{position:fixed;top:20px;right:20px;background:rgba(0,0,0,0.6);border:2px solid gold;border-radius:10px;padding:8px 20px;color:gold;box-shadow:0 0 10px gold;font-size:16px;}
-section{padding:100px 20px 60px;text-align:center;}
-.download-box{border:2px solid #7f3cff;border-radius:10px;background:rgba(0,0,0,0.5);margin:20px auto;padding:20px;max-width:400px;box-shadow:0 0 20px #a66bff;}
-.download-box a{display:inline-block;margin-top:10px;padding:8px 20px;background:#5a1aff;border-radius:8px;color:#fff;text-decoration:none;box-shadow:0 0 10px #a66bff;}
-footer{text-align:center;color:#999;margin-top:80px;padding:20px;border-top:1px solid #333;background:rgba(0,0,0,0.4);}
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(#1e1e1e, #121212);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  header {
+    text-align: center;
+    background-color: #2d2d2d;
+    padding: 15px;
+    border-bottom: 2px solid #00ff80;
+  }
+
+  header h1 {
+    color: #00ff80;
+    font-size: 26px;
+    margin: 5px 0;
+  }
+
+  section {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .earn-section {
+    background: #222;
+    border: 2px solid #00ff80;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+
+  .earn-section h2 {
+    color: #00ff80;
+    text-align: center;
+  }
+
+  .earn-button {
+    display: block;
+    background: #00ff80;
+    color: #000;
+    text-align: center;
+    padding: 12px;
+    border-radius: 6px;
+    margin: 15px auto;
+    text-decoration: none;
+    font-weight: bold;
+    width: 200px;
+    transition: 0.3s;
+  }
+
+  .earn-button:hover {
+    background: #00e676;
+  }
+
+  .downloads-section h2 {
+    color: #ffa500;
+    text-align: center;
+  }
+
+  .download-card {
+    background: #2a2a2a;
+    border: 2px solid #ffa500;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .download-card h3 {
+    color: #ffd54f;
+  }
+
+  .download-card a {
+    background: #00ff80;
+    color: #000;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #00ff80;
+    background-color: #1b1b1b;
+    margin-top: 40px;
+  }
+
+  footer a {
+    color: #00ff80;
+    text-decoration: none;
+  }
 </style>
 </head>
 <body>
-<canvas id="galaxy"></canvas>
-<button class="back" onclick="location.href='index.html'">← Back</button>
-<div class="coinbox">💰 Coins: <span id="coins">0</span></div>
-<header><h1>🛒 PAnetwork Shop</h1></header>
-<section>
-  <div class="download-box"><p>Knockback Practice Plugin</p><a href="#">⬇ Download</a></div>
-  <div class="download-box"><p>Killstreak Leaderboard Plugin</p><a href="#">⬇ Download</a></div>
-  <div class="download-box"><p>FireCharge Explosion Plugin</p><a href="#">⬇ Download</a></div>
+
+<header>
+  <h1>§aP§eA§7network Shop & Earn</h1>
+</header>
+
+<section class="earn-section">
+  <h2>💰 Earn Coins</h2>
+  <p>Earn free coins by watching ads, completing tasks, or visiting our partners. You can use these coins to download premium Minecraft plugins, maps, and YouTube assets!</p>
+
+  <a href="addcoin.html" class="earn-button">▶ Add Coins</a>
+  <a href="#downloads" class="earn-button">⬇ Go to Downloads</a>
 </section>
-<footer>© 2025 PAnetwork. All rights reserved.</footer>
-  <script type='text/javascript' src='//pl27971401.effectivegatecpm.com/ee/03/f9/ee03f971caa13e62194449f4666daf19.js'></script>
-  <script type="text/javascript">
-	atOptions = {
-		'key' : 'aa3df8634776f69cca3d9222ce70805a',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/aa3df8634776f69cca3d9222ce70805a/invoke.js"></script>
-	<script type="text/javascript">
-	atOptions = {
-		'key' : '0a8e00603154fb044e19a0f4f356ac24',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/0a8e00603154fb044e19a0f4f356ac24/invoke.js"></script>
-	<footer>
-  <p>© 2025 PAnetwork. All rights reserved.</p>
-  <p>
-    <a href="index.html">Home</a> |
-    <a href="plugins.html">Plugins</a> |
-    <a href="maps.html">Maps</a> |
-    <a href="youtube.html">YouTube Tools</a> |
-    <a href="panetwork.html">PAnetwork Info</a>
-  </p>
+
+<section class="downloads-section" id="downloads">
+  <h2>🧱 Free Plugins & Maps</h2>
+
+  <div class="download-card">
+    <h3>BotPractice Plugin</h3>
+    <p>Train your PvP and building skills with custom knockback and block resets.</p>
+    <a href="#">Download</a>
+  </div>
+
+  <div class="download-card">
+    <h3>BedWars Lite</h3>
+    <p>Classic BedWars setup with simplified gameplay — perfect for small servers.</p>
+    <a href="#">Download</a>
+  </div>
+
+  <div class="download-card">
+    <h3>SkyPvP Arena Map</h3>
+    <p>A floating PvP arena designed for 1v1 duels and quick fights.</p>
+    <a href="#">Download</a>
+  </div>
+
+  <div class="download-card">
+    <h3>KillStreak System</h3>
+    <p>Add dynamic killstreaks and leaderboards to your Minecraft server.</p>
+    <a href="#">Download</a>
+  </div>
+
+  <div class="download-card">
+    <h3>Fireball Explosive Plugin</h3>
+    <p>Throw fireballs that explode like TNT using custom items!</p>
+    <a href="#">Download</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 PAnetwork | <a href="panetwork.html">Rules & Info</a></p>
 </footer>
 
-<script>
-let coins=0;document.getElementById("coins").textContent=coins;
-const c=document.getElementById("galaxy"),x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;const s=[],f=[];
-class S{constructor(a,b,d,e){this.x=a;this.y=b;this.r=d;this.s=e;}draw(){x.beginPath();x.arc(this.x,this.y,this.r,0,Math.PI*2);x.fillStyle=`rgba(150,150,255,${this.s})`;x.shadowColor="#a080ff";x.shadowBlur=10;x.fill();}}
-class F{constructor(){this.x=Math.random()*c.width;this.y=Math.random()*c.height;this.r=2;this.a=Math.random();this.vx=(Math.random()-.5)*1.5;this.vy=(Math.random()-.5)*1.5;}move(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>c.width)this.vx*=-1;if(this.y<0||this.y>c.height)this.vy*=-1;}draw(){x.beginPath();x.arc(this.x,this.y,this.r,0,Math.PI*2);x.fillStyle=`rgba(255,255,150,${this.a})`;x.shadowColor="#ffff66";x.shadowBlur=10;x.fill();}}
-for(let i=0;i<200;i++)s.push(new S(Math.random()*c.width,Math.random()*c.height,Math.random()*1.5,Math.random()));for(let i=0;i<30;i++)f.push(new F());
-function anim(){x.fillStyle="rgba(0,0,0,0.25)";x.fillRect(0,0,c.width,c.height);s.forEach(a=>a.draw());f.forEach(a=>{a.move();a.draw();});requestAnimationFrame(anim);}anim();
-window.addEventListener('resize',()=>{c.width=innerWidth;c.height=innerHeight;});
-</script>
 </body>
 </html>
