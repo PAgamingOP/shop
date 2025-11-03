@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earn Coins | PA Network</title>
+<style>
+body {
+  background: black;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.content {
+  position: relative;
+  z-index: 2;
+  margin-top: 100px;
+}
+button {
+  background: linear-gradient(90deg, #00ffcc, #33ff99);
+  border: none;
+  padding: 12px 25px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
+}
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00ffcc;
+}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="content">
+  <h1>🎯 Complete a Link to Earn Coins</h1>
+  <p>Click any 1 link below to earn:</p>
+  <button onclick="completeTask()">✅ Complete Task</button>
+</div>
+
+<script>
+// === Background Fireflies ===
+const canvas=document.getElementById("bg"),ctx=canvas.getContext("2d");
+canvas.width=innerWidth;canvas.height=innerHeight;
+const particles=[];
+for(let i=0;i<70;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2,
+    dx:(Math.random()-0.5)*0.4,
+    dy:(Math.random()-0.5)*0.4
+  });
+}
+function animate(){
+  ctx.fillStyle="rgba(0,0,0,0.25)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(0,255,200,0.8)";
+    ctx.shadowColor="#00ffaa";
+    ctx.shadowBlur=10;
+    ctx.fill();
+    p.x+=p.dx;p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width)p.dx*=-1;
+    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+window.addEventListener('resize',()=>{canvas.width=innerWidth;canvas.height=innerHeight;});
+
+// === Coin Logic ===
+window.onload = () => {
+  // Verify player came from shop
+  if (sessionStorage.getItem("earningInProgress") !== "true") {
+    alert("❌ Access denied!");
+    window.location.href="shop.html";
+  }
+}
+
+function completeTask(){
+  sessionStorage.removeItem("earningInProgress");
+  let coins=parseInt(localStorage.getItem("coins")||"0");
+  coins++;
+  localStorage.setItem("coins",coins);
+  alert("🎉 You earned +1 coin!");
+  window.location.href="shop.html";
+}
+</script>
+</body>
+</html>
