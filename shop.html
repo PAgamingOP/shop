@@ -3,161 +3,299 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAnetwork | Earn Coins & Free Plugins</title>
-<meta name="description" content="Earn coins by watching ads and download free Minecraft plugins, maps, and tools from PAnetwork.">
-<meta name="keywords" content="Minecraft plugins, earn coins, free downloads, PocketMine, MCPE maps, PAnetwork, pagamingop">
-<link rel="canonical" href="https://pagamingop.github.io/shop/shop.html">
+<title>PAnetwork | Earn & Spend Coins</title>
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
 <style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(#1e1e1e, #121212);
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
+html,body {
+  margin:0;
+  padding:0;
+  height:100%;
+  overflow-y:auto;
+  font-family:'Minecraft', monospace;
+  background: radial-gradient(circle at bottom, #03010a, #000);
+  color:#fff;
+}
 
-  header {
-    text-align: center;
-    background-color: #2d2d2d;
-    padding: 15px;
-    border-bottom: 2px solid #00ff80;
-  }
+/* Background Fireflies */
+canvas#bg {
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  z-index:-1;
+}
 
-  header h1 {
-    color: #00ff80;
-    font-size: 26px;
-    margin: 5px 0;
-  }
+header {
+  text-align:center;
+  padding:60px 0 20px;
+  font-size:28px;
+  color:#ffd700;
+  text-shadow:0 0 10px #ffb700, 0 0 25px #ff8800;
+}
 
-  section {
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-  }
+.coinbox {
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:rgba(0,0,0,0.6);
+  border:2px solid gold;
+  border-radius:10px;
+  padding:8px 20px;
+  color:gold;
+  box-shadow:0 0 10px gold;
+  font-size:16px;
+  z-index:5;
+}
 
-  .earn-section {
-    background: #222;
-    border: 2px solid #00ff80;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 40px;
-  }
+.back {
+  position:fixed;
+  top:20px;
+  left:20px;
+  background:linear-gradient(145deg,#2d0050,#18002e);
+  border:2px solid #7f3cff;
+  border-radius:10px;
+  padding:10px 20px;
+  box-shadow:0 0 15px #a66bff;
+  color:white;
+  cursor:pointer;
+  z-index:5;
+}
 
-  .earn-section h2 {
-    color: #00ff80;
-    text-align: center;
-  }
+section {
+  padding:100px 20px 80px;
+  text-align:center;
+}
 
-  .earn-button {
-    display: block;
-    background: #00ff80;
-    color: #000;
-    text-align: center;
-    padding: 12px;
-    border-radius: 6px;
-    margin: 15px auto;
-    text-decoration: none;
-    font-weight: bold;
-    width: 200px;
-    transition: 0.3s;
-  }
+/* Earn Coins Box */
+.earn-box {
+  border:2px solid #ffb700;
+  border-radius:10px;
+  background:rgba(0,0,0,0.5);
+  margin:20px auto;
+  padding:20px;
+  max-width:500px;
+  box-shadow:0 0 20px #ffd966;
+}
+.earn-btn {
+  background:linear-gradient(145deg,#ffcc00,#ff9900);
+  border:none;
+  padding:10px 25px;
+  border-radius:8px;
+  color:#000;
+  font-weight:bold;
+  box-shadow:0 0 15px gold;
+  cursor:pointer;
+  transition:transform 0.2s;
+}
+.earn-btn:hover {
+  transform:scale(1.1);
+  box-shadow:0 0 25px #ffd700;
+}
 
-  .earn-button:hover {
-    background: #00e676;
-  }
+/* Plugin Shop Items */
+.shop-item {
+  border:2px solid #7f3cff;
+  border-radius:10px;
+  background:rgba(0,0,0,0.5);
+  margin:20px auto;
+  padding:20px;
+  max-width:400px;
+  box-shadow:0 0 20px #a66bff;
+}
+.shop-item h3 {
+  color:#a66bff;
+  margin-bottom:10px;
+}
+.shop-item p {
+  color:#ccc;
+  margin:5px 0;
+}
+.download-btn {
+  background:#5a1aff;
+  border:none;
+  padding:10px 25px;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:10px;
+  box-shadow:0 0 10px #a66bff;
+  transition:transform 0.2s;
+}
+.download-btn:hover {
+  transform:scale(1.1);
+  box-shadow:0 0 20px #b580ff;
+}
 
-  .downloads-section h2 {
-    color: #ffa500;
-    text-align: center;
-  }
+footer {
+  text-align:center;
+  color:#999;
+  margin-top:80px;
+  padding:20px;
+  border-top:1px solid #333;
+  background:rgba(0,0,0,0.4);
+}
 
-  .download-card {
-    background: #2a2a2a;
-    border: 2px solid #ffa500;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 15px 0;
-  }
-
-  .download-card h3 {
-    color: #ffd54f;
-  }
-
-  .download-card a {
-    background: #00ff80;
-    color: #000;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-weight: bold;
-  }
-
-  footer {
-    text-align: center;
-    padding: 20px;
-    border-top: 2px solid #00ff80;
-    background-color: #1b1b1b;
-    margin-top: 40px;
-  }
-
-  footer a {
-    color: #00ff80;
-    text-decoration: none;
-  }
+.popup {
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:100;
+}
+.popup-box {
+  background:#111;
+  padding:30px;
+  border:2px solid gold;
+  border-radius:10px;
+  text-align:center;
+  color:#fff;
+  box-shadow:0 0 20px gold;
+}
+.popup-box button {
+  margin-top:15px;
+  background:linear-gradient(145deg,#ffcc00,#ff9900);
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  color:#000;
+  font-weight:bold;
+}
 </style>
 </head>
 <body>
+<canvas id="bg"></canvas>
 
-<header>
-  <h1>§aP§eA§7network Shop & Earn</h1>
-</header>
+<button class="back" onclick="location.href='index.html'">← Back</button>
+<div class="coinbox">💰 Coins: <span id="coins">0</span></div>
 
-<section class="earn-section">
-  <h2>💰 Earn Coins</h2>
-  <p>Earn free coins by watching ads, completing tasks, or visiting our partners. You can use these coins to download premium Minecraft plugins, maps, and YouTube assets!</p>
+<header>🪙 Earn & Spend Coins 🪙</header>
 
-  <a href="addcoin.html" class="earn-button">▶ Add Coins</a>
-  <a href="#downloads" class="earn-button">⬇ Go to Downloads</a>
+<section>
+  <!-- Earn Section -->
+  <div class="earn-box">
+    <h2>Earn Coins</h2>
+    <p>Click below to earn 1 coin. You’ll be redirected to a random page.</p>
+    <button class="earn-btn" onclick="earnCoin()">🎁 Earn Coins</button>
+  </div>
+
+  <!-- Shop Items -->
+  <div class="shop-item" data-price="5">
+    <h3>Knockback Practice Plugin</h3>
+    <p>Price: 5 🪙</p>
+    <a href="#" class="download-btn" onclick="purchase(this)">⬇ Download</a>
+  </div>
+
+  <div class="shop-item" data-price="3">
+    <h3>Killstreak Leaderboard Plugin</h3>
+    <p>Price: 3 🪙</p>
+    <a href="#" class="download-btn" onclick="purchase(this)">⬇ Download</a>
+  </div>
+
+  <div class="shop-item" data-price="4">
+    <h3>FireCharge Explosion Plugin</h3>
+    <p>Price: 4 🪙</p>
+    <a href="#" class="download-btn" onclick="purchase(this)">⬇ Download</a>
+  </div>
+
+  <div class="shop-item" data-price="2">
+    <h3>Damage Tracker Plugin</h3>
+    <p>Price: 2 🪙</p>
+    <a href="#" class="download-btn" onclick="purchase(this)">⬇ Download</a>
+  </div>
+
+  <div class="shop-item" data-price="6">
+    <h3>Map Reset Utility</h3>
+    <p>Price: 6 🪙</p>
+    <a href="#" class="download-btn" onclick="purchase(this)">⬇ Download</a>
+  </div>
 </section>
 
-<section class="downloads-section" id="downloads">
-  <h2>🧱 Free Plugins & Maps</h2>
-
-  <div class="download-card">
-    <h3>BotPractice Plugin</h3>
-    <p>Train your PvP and building skills with custom knockback and block resets.</p>
-    <a href="#">Download</a>
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <p>❌ Not enough coins! Earn more to continue.</p>
+    <button onclick="goEarn()">Earn Coins Now</button>
   </div>
+</div>
 
-  <div class="download-card">
-    <h3>BedWars Lite</h3>
-    <p>Classic BedWars setup with simplified gameplay — perfect for small servers.</p>
-    <a href="#">Download</a>
-  </div>
+<footer>© 2025 PAnetwork. All rights reserved.</footer>
 
-  <div class="download-card">
-    <h3>SkyPvP Arena Map</h3>
-    <p>A floating PvP arena designed for 1v1 duels and quick fights.</p>
-    <a href="#">Download</a>
-  </div>
+<script>
+// === Background Fireflies ===
+const canvas=document.getElementById("bg"),ctx=canvas.getContext("2d");
+canvas.width=innerWidth;canvas.height=innerHeight;
+const particles=[];
+for(let i=0;i<80;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2,
+    dx:(Math.random()-0.5)*0.5,
+    dy:(Math.random()-0.5)*0.5
+  });
+}
+function animate(){
+  ctx.fillStyle="rgba(0,0,0,0.25)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(255,230,100,0.8)";
+    ctx.shadowColor="#ffff66";
+    ctx.shadowBlur=10;
+    ctx.fill();
+    p.x+=p.dx;p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width)p.dx*=-1;
+    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+window.addEventListener('resize',()=>{canvas.width=innerWidth;canvas.height=innerHeight;});
 
-  <div class="download-card">
-    <h3>KillStreak System</h3>
-    <p>Add dynamic killstreaks and leaderboards to your Minecraft server.</p>
-    <a href="#">Download</a>
-  </div>
+// === Coin System ===
+function loadCoins(){
+  let coins=parseInt(localStorage.getItem("coins")||"0");
+  document.getElementById("coins").textContent=coins;
+}
+loadCoins();
 
-  <div class="download-card">
-    <h3>Fireball Explosive Plugin</h3>
-    <p>Throw fireballs that explode like TNT using custom items!</p>
-    <a href="#">Download</a>
-  </div>
-</section>
+function earnCoin(){
+  const links=[
+    "https://pagamingop.github.io/shop/addcoin.html",
+    "https://pagamingop.github.io/shop/addcoin.html",
+    "https://pagamingop.github.io/shop/addcoin.html",
+    "https://pagamingop.github.io/shop/addcoin.html",
+    "https://pagamingop.github.io/shop/addcoin.html"
+  ];
+  const randomLink=links[Math.floor(Math.random()*links.length)];
+  window.location.href=randomLink; // (later replace with your short links)
+}
 
-<footer>
-  <p>© 2025 PAnetwork | <a href="panetwork.html">Rules & Info</a></p>
-</footer>
+// === Buying Logic ===
+function purchase(btn){
+  const price=parseInt(btn.parentElement.getAttribute("data-price"));
+  let coins=parseInt(localStorage.getItem("coins")||"0");
+  if(coins>=price){
+    coins-=price;
+    localStorage.setItem("coins",coins);
+    loadCoins();
+    alert("✅ Purchase successful! Download starting...");
+    // simulate download link
+    window.open("https://example.com/download.zip","_blank");
+  }else{
+    document.getElementById("popup").style.display="flex";
+  }
+}
 
+// === Popup Control ===
+function goEarn(){
+  document.getElementById("popup").style.display="none";
+  earnCoin();
+}
+</script>
 </body>
 </html>
