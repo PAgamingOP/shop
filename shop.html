@@ -157,19 +157,85 @@ button:hover {
   </div>
 
   <div class="shop-grid">
-    <div class="shop-item" data-price="3">
-      <h3>Custom Plugin</h3>
-      <div class="price">Price: 🪙 3 Coins</div>
-      <button onclick="purchase(this)">Download</button>
-    </div>
-    <div class="shop-item" data-price="5">
-      <h3>Exclusive Map</h3>
+    <div class="shop-item" data-price="5" data-link="https://www.mediafire.com/file/qekvc1evyxgq4hb/Plugins_pack_1.zip/file">
+      <h3>80+ Plugins pack</h3>
       <div class="price">Price: 🪙 5 Coins</div>
       <button onclick="purchase(this)">Download</button>
     </div>
-    <div class="shop-item" data-price="8">
-      <h3>Advanced Plugin Pack</h3>
-      <div class="price">Price: 🪙 8 Coins</div>
+    <div class="shop-item" data-price="5" data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+    </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+  </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+  </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+  </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+  </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+  </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+  </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+  </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+  </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+  </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
+      <button onclick="purchase(this)">Download</button>
+    </div>
+  </div>
+    <div class="shop-item" data-price="5"data-link="#">
+      <h3>soon</h3>
+      <div class="price">Price: 🪙 5 Coins</div>
       <button onclick="purchase(this)">Download</button>
     </div>
   </div>
@@ -295,7 +361,7 @@ function purchase(btn) {
     localStorage.setItem("coins", coins);
     loadCoins();
     alert("✅ Purchase successful! Download starting...");
-    window.open("https://example.com/download.zip", "_blank");
+    window.open(downloadLink, "_blank");
   } else {
     document.getElementById("popup").style.display = "flex";
   }
